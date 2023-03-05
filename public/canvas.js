@@ -1,5 +1,8 @@
 let canvas = document.querySelector("canvas");
-let tool = canvas.getContext("2d");
+// Browser API
+let tool = canvas.getContext("2d"); // getContext() method returns a drawing context on the canvas, or null if the context identifier 
+// is not supported, or the canvas has already been set to a different context mode.
+// "2d", leading to the creation of a CanvasRenderingContext2D object representing a two-dimensional rendering context.
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 let mouseDown = false;
@@ -7,8 +10,8 @@ let penColor = "red";
 let eraserColor = "white";
 let penWidth = "3";
 let eraserWidth = "3";
-let undoRedoTracker = [];
-let track = 0;
+let undoRedoTracker = []; // Storing Data
+let track = 0; // Represent which action from tracker array
 let eraserFlag = false;
 
 
@@ -25,6 +28,12 @@ tool.lineWidth = penWidth;
 
 canvas.addEventListener("mousedown", (e) => {
     mouseDown = true;
+    // beginPath({
+    //     x: e.clientX,
+    //     y: e.clientY,
+    // })
+
+    // socket.emit sends the data to the server
     socket.emit("beginPath", {
         x: e.clientX,
         y: e.clientY,
@@ -44,7 +53,7 @@ canvas.addEventListener("mousemove", (e) => {
 canvas.addEventListener("mouseup", (e) => {
     mouseDown = false;
     undoRedoTracker.push(canvas.toDataURL());
-    track = undoRedoTracker.length - 1;
+    track = undoRedoTracker.length - 1;  // represent last element of tracker array
 })
 
 undoBtn.addEventListener("click", (e) => {
@@ -123,7 +132,7 @@ function undoRedoCanvas(trackObj) {
     img.onload = (e) => tool.drawImage(img, 0, 0, canvas.width, canvas.height);
 }
 
-// Sockets listening
+// Sockets listening: For listening data from the server
 socket.on("beginPath", (data) => {
     beginPath(data);
 })
