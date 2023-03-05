@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0-2/css/all.min.css"
         integrity="sha512-61a6zi50gYXGgd/n9+ZT2/RKnXr6lkRoWlS88AjFdoUHaIDnyBAcoE0Vs/QDU3lK3nCcUowNDqmQ8WaV0yT4qw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="icon" href="Icons/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="Icons/board.svg"  type="image/x-icon" />
     <link rel="stylesheet" href="style.css">
-    <title>Pep_Board</title>
+    <title>Open Board</title>
 </head>
 
 <body>
@@ -47,7 +47,8 @@
         integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj"
         crossorigin="anonymous"></script>
     <script>
-        let socket = io.connect("https://my-openboard.herokuapp.com");
+        let socket = io.connect("https://open-board-six.vercel.app");
+        // let socket = io.connect("http://localhost:3000"); // everytime make connection when new device render index.html(frontend of website)
     </script>
     <script src="./canvas.js"></script>
     <script src="./tools.js"></script>
